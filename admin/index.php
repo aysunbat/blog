@@ -11,6 +11,7 @@ include('interface/islem.php');
 #siniflar
 include('sinif/uye.php');
 include('sinif/kategori.php');
+include('sinif/icerik.php');
 /*İnterface ve Sınıflar İnclude Bit*/
 
 $uye = new Uye;
@@ -49,6 +50,11 @@ switch ($y) {
 	case 'kategori':
 		$kategori = new Kategori;
 		$yer = 'kategori';
+	break;
+	case 'icerik':
+		$icerik = new Icerik;
+		include('sinif/upload.php');
+		$yer = 'icerik';
 	break;
 
 	default:

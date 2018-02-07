@@ -8,7 +8,16 @@
                     <li>
                         <a href="index.php?y=kategori" class=" hvr-bounce-to-right"><i class="fa fa-folder-open nav_icon "></i><span class="nav-label">Kategori</span> </a>
                         <ul class="nav nav-second-level">
+                            <li><a href="index.php?y=kategori" class=" hvr-bounce-to-right"> <i class="fa fa-eye nav_icon"></i>Kategoriler Gör</a></li>
                             <li><a href="index.php?y=kategori&s=ekle" class=" hvr-bounce-to-right"> <i class="fa fa-plus nav_icon"></i>Ekle</a></li>
+
+                       </ul>
+                    </li>
+                    <li>
+                        <a href="index.php?y=icerik" class=" hvr-bounce-to-right"><i class="fa fa-file nav_icon "></i><span class="nav-label">İçerik</span> </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.php?y=icerik" class=" hvr-bounce-to-right"> <i class="fa fa-eye nav_icon"></i>İçerikleri Gör</a></li>
+                            <li><a href="index.php?y=icerik&s=ekle" class=" hvr-bounce-to-right"> <i class="fa fa-plus nav_icon"></i>Ekle</a></li>
 
                        </ul>
                     </li>
