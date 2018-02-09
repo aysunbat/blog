@@ -21,6 +21,9 @@
 
                        </ul>
                     </li>
+                     <li>
+                        <a href="index.php?y=ayar" class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon "></i><span class="nav-label">Ayarlar</span> </a>
+                    </li>
                    <?php /*
                     <li>
                         <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Menu Levels</span><span class="fa arrow"></span></a>

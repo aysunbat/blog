@@ -9,9 +9,11 @@ include('trait/ekle.php');
 include('interface/islem.php');
 
 #siniflar
+include('sinif/pagination.php');
 include('sinif/uye.php');
 include('sinif/kategori.php');
 include('sinif/icerik.php');
+include('sinif/ayar.php');
 /*İnterface ve Sınıflar İnclude Bit*/
 
 $uye = new Uye;
@@ -56,7 +58,10 @@ switch ($y) {
 		include('sinif/upload.php');
 		$yer = 'icerik';
 	break;
-
+	case 'ayar':
+		$ayar = new Ayar;
+		$yer  = 'ayar';
+	break;
 	default:
 		$yer = 'index';
 	break;
