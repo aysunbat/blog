@@ -33,7 +33,8 @@ class Icerik
 	}
 	public function setLink($l)
 	{
-		$this->link = $l;
+		global $db;
+		$this->link = $db->escape(strip_tags($l));
 	}
 	public function getLink()
 	{
@@ -149,6 +150,63 @@ class Icerik
 		else
 		{
 			return nl2br($metin);
+		}
+	}
+
+	public function yorumYap()
+	{
+		global $db,$ayar;
+		if($ayar['yorumdurum']==1 && isset($_POST['isim']))
+		{
+			$isim = $db->escape(strip_tags($_POST['isim']));
+			$mail = $db->escape(strip_tags($_POST['mail']));
+			$yorum = $db->escape(strip_tags($_POST['yorum']));
+			$id = intval($_POST['id']);
+			if(empty($isim)||empty($mail)||empty($yorum)||empty($id))
+			{
+				return false;
+			}
+			if($id==0)
+			{
+				return false;
+			}
+			if($ayar['yorumonay']==1)
+			{
+				$durum = 2;
+			}
+			if($ayar['yorumonay']==2)
+			{
+				$durum = 1;
+			}
+			$tarih = time();
+			$s = $db->query("INSERT INTO yorum (ad,mail,icerik,tarih,yorum,durum)
+									VALUES ('$isim','$mail',$id,$tarih,'$yorum',$durum)");
+			if($s)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function yorumListele($id)
+	{
+		global $db;
+		$say = $db->get_var('SELECT COUNT(id) FROM yorum WHERE icerik='.$id.' AND durum=1');
+		if($say>0)
+		{
+			$sorgu = $db->get_results('SELECT * FROM yorum WHERE icerik='.$id.' AND durum=1 ORDER BY id DESC');
+			return $sorgu;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }
