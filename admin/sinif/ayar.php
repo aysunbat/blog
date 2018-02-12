@@ -32,7 +32,6 @@ class Ayar
 			{
 				$db->query("INSERT INTO ".$this->tabloAdi." (ad,deger) VALUES ('$ad','$deger')");
 			}
-			
 		}
 		return true;
 	}
