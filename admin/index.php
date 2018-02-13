@@ -1,5 +1,6 @@
 <?php
 require_once('../baglan.php');
+require_once('fonksiyon.php');
 /*İnterface ve Sınıflar İnclude Başla*/
 
 #traitler
@@ -13,6 +14,7 @@ include('sinif/pagination.php');
 include('sinif/uye.php');
 include('sinif/kategori.php');
 include('sinif/icerik.php');
+include('sinif/yorum.php');
 include('sinif/ayar.php');
 /*İnterface ve Sınıflar İnclude Bit*/
 
@@ -61,6 +63,13 @@ switch ($y) {
 	case 'ayar':
 		$ayar = new Ayar;
 		$yer  = 'ayar';
+	break;
+	case 'uye':
+		$yer  = 'uye';
+	break;
+	case 'yorum':
+		$yorum = new Yorum;
+		$yer  = 'yorum';
 	break;
 	default:
 		$yer = 'index';

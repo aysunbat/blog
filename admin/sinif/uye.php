@@ -2,6 +2,7 @@
 class Uye implements Islem
 {
 	private $tabloAdi = 'kullanici';
+	public $icerikSayisi = 10;
 	public function ekle($p)
 	{
 		global $db;
@@ -28,6 +29,7 @@ class Uye implements Islem
 				{
 					$sonuc[] = true;
 					$_SESSION['giris'] = 'OK';
+					$_SESSION['nick']  = $nick;
 				}	
 				else
 				{
@@ -59,6 +61,7 @@ class Uye implements Islem
 		if($sayi>0)
 		{
 			$_SESSION['giris'] = 'OK';
+			$_SESSION['nick']  = $nick;
 			$sonuc[] = true;
 		}
 		else
@@ -72,22 +75,76 @@ class Uye implements Islem
 	}
 	public function guncelle($p)
 	{
+		global $db; 
+		if(empty($p['nick'])||empty($p['id']))
+		{
+			return false;
+		}
 
-	}
+		$eski = $this->tekListele($p['id']);
+		if(empty($p['sifre']))
+		{
+			$sifre = $eski->sifre;
+		}
+		else
+		{
+			$sifre = md5($p['sifre']);
+		}
+		$nick = $db->escape($p['nick']);
+		$id = intval($p['id']);
+		$sor = $db->get_var('SELECT COUNT(id) FROM '.$this->tabloAdi.' WHERE nick="'.$nick.'" AND id!='.$id);
+		if($sor>0)
+		{
+			return false;
+		}
+		$g = $db->query("UPDATE ".$this->tabloAdi." SET nick='$nick',sifre='$sifre' WHERE id=$id");
+		if($g)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}	
 	public function listele()
 	{
-
+		global $db;
+		if(!empty($_GET['sayfa']))
+		{
+			$sayfa = $_GET['sayfa'];
+		}
+		else
+		{
+			$sayfa = 1;
+		}
+		
+		$limit = ($sayfa-1)*$this->icerikSayisi;
+		$sonuc = $db->get_results('SELECT *  FROM '.$this->tabloAdi.' ORDER BY id DESC LIMIT '.$limit.','.$this->icerikSayisi);
+		return $sonuc;
 	}
 	public function sil($id)
 	{
-
+		global $db;
+		return $db->query('DELETE FROM '.$this->tabloAdi.' WHERE id='.$id);
 	}
-
+	public function toplamIcerik()
+	{
+		global $db;
+		$say = $db->get_var('SELECT COUNT(id) FROM '.$this->tabloAdi);
+		return  $say;
+	}
 	public function uyeSayisi()
 	{
 		global $db;
 		$say = $db->get_var('SELECT COUNT(id) FROM '.$this->tabloAdi);	
 		return $say;
+	}
+
+	public function tekListele($id)
+	{
+		global $db;
+		return $db->get_row('SELECT * FROM '.$this->tabloAdi.' WHERE id='.$id);
 	}
 
 }

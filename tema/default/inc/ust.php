@@ -40,16 +40,17 @@
 			 <!---start-top-nav---->
 			 <div class="top-menu">
 				 <div class="search">
-					 <form>
-					 <input type="text" placeholder="" required="">
+					 <form action="<?php echo url;?>/index.php">
+					 <input type="text" name="sorgu" placeholder="arama terimi" required="">
+					 <input type="hidden" name="yer" value="arama"/>
 					 <input type="submit" value=""/>
 					 </form>
 				 </div>
 				  <span class="menu"> </span> 
 				   <ul>
 						<li class="active"><a href="<?php echo url;?>">Anasayfa</a></li>						
-						<li><a href="about.html">ABOUT</a></li>	
-						<li><a href="contact.html">CONTACT</a></li>						
+						<li><a href="<?php echo url;?>/hakkimda">Hakkımda</a></li>	
+									
 						<div class="clearfix"> </div>
 				 </ul>
 			 </div>

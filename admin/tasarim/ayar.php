@@ -56,7 +56,10 @@ include('ust.php');?>
     <div class="radio-inline"><label><input type="radio" name="yorumonay" <?php if($ayar->ayarDegeriAl('yorumonay')==2):?>checked="checked"<?php endif;?> value="2">Hayır</label></div>
   </div>
 
-  
+  <div class="form-group">
+    <label for="exampleInputEmail1">Hakkımda Sayfası:</label>
+    <textarea name="hakkimda" class="form-control" rows="20"><?php echo $ayar->ayarDegeriAl('hakkimda');?></textarea> 
+  </div>
  
   <button type="submit" class="btn btn-default">Güncelle</button>
 </form>

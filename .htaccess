@@ -1,5 +1,6 @@
 RewriteEngine on
 RewriteBase /blog
+ReWriteRule ^hakkimda index.php?yer=hakkimda [L,NC]
 ReWriteRule ^(.*).html index.php?yer=icerik&link=$1 [L,NC]
 ReWriteRule ^sayfa/(.*) index.php?yer=index&sayfa=$1 [L,NC]
 ReWriteRule ^kategori/(.*)/sayfa/(.*) index.php?yer=kategori&link=$1&sayfa=$2 [L,NC]

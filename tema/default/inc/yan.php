@@ -1,38 +1,42 @@
   <div class="col-md-4 content-right">
 				 <div class="recent">
-					 <h3>RECENT POSTS</h3>
+					 <h3>Son Yazılar</h3>
 					 <ul>
-					 <li><a href="#">Aliquam tincidunt mauris</a></li>
-					 <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
-					 <li><a href="#">Nunc dignissim risus consecu</a></li>
-					 <li><a href="#">Cras ornare tristiqu</a></li>
+					 <?php $sorgu = sonIcerikleriGoster();
+					 foreach ($sorgu as $s ):
+					 ?>	
+					 <li><a href="<?php echo $icerik->icerikLinki($s->link);?>"><?php echo $s->baslik;?></a></li>
+					 <?php endforeach;?>
 					 </ul>
 				 </div>
 				 <div class="comments">
-					 <h3>RECENT COMMENTS</h3>
+					 <h3>Son Yorumlar</h3>
 					 <ul>
-					 <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-					 <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
-					 <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
+					 <?php $sorgu = sonYorumlariGoster();
+					 foreach ($sorgu as $s ):
+					 ?>
+					 <li><a href="<?php echo $icerik->icerikLinki($s->link);?>"><?php echo $s->baslik;?></a> içeriği için <?php echo $s->ad;?>   </li>
+					 <?php endforeach;?>
 					 </ul>
 				 </div>
 				 <div class="clearfix"></div>
 				 <div class="recent">
-					 <h3>HITS</h3>
+					 <h3>Popüler İçerikler</h3>
 					 <ul>
-					 <li><a href="#">Aliquam tincidunt mauris (189)</a></li>
-					 <li><a href="#">Vestibulum auctor dapibus  lipsum (180)</a></li>
-					 <li><a href="#">Nunc dignissim risus consecu (175)</a></li>
-					 <li><a href="#">Cras ornare tristiqu (162)</a></li>
+					 <?php $sorgu = populerIcerikleriGoster();
+					 foreach ($sorgu as $s ):
+					 ?>	
+					 <li><a href="<?php echo $icerik->icerikLinki($s->link);?>"><?php echo $s->baslik;?></a>(<?php echo $s->hit;?>)</li>
+					 <?php endforeach;?>
 					 </ul>
 				 </div>
 				 <div class="categories">
-					 <h3>CATEGORIES</h3>
+					 <h3>Kategoriler</h3>
 					 <ul>
-					 <li><a href="#">Vivamus vestibulum nulla</a></li>
-					 <li><a href="#">Integer vitae libero ac risus e</a></li>
-					 <li><a href="#">Vestibulum commo</a></li>
-					 <li><a href="#">Cras iaculis ultricies</a></li>
+					 <?php $sorgu = kategorileriGoster();
+					 foreach($sorgu as $s):?>
+					 <li><a href="<?php echo url;?>/kategori/<?php echo $s->link;?>"><?php echo $s->baslik;?></a></li>
+					 <?php endforeach;?>
 					 </ul>
 				 </div>
 				 <div class="clearfix"></div>

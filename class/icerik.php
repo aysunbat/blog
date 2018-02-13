@@ -111,11 +111,21 @@ class Icerik
 		switch ($yer) {
 			case 'icerik':
 				$sorgu = $db->get_results('SELECT * FROM icerik WHERE link="'.$link.'" AND durum=1');
+				if(!empty($sorgu))
+				{
+					$db->query('UPDATE icerik SET hit=hit+1 WHERE id='.$sorgu[0]->id);
+				}
 				$this->setToplamIcerik(1);
 				break;
 			case 'kategori':
 				$sorgu = $db->get_results('SELECT i.*,k.baslik AS kategoriAd,k.link AS kategoriLink FROM kategori k LEFT JOIN icerik i ON k.id=i.kategori WHERE k.link="'.$link.'" AND i.durum=1 ORDER BY i.id DESC LIMIT '.$limit.', '.$this->getIcerikSayisi());
 				$say = $db->get_var('SELECT COUNT(k.id) FROM kategori k LEFT JOIN icerik i ON k.id=i.kategori WHERE k.link="'.$link.'" AND i.durum=1');
+				$this->setToplamIcerik($say);
+			break;
+			case 'arama':
+				$arama = $db->escape($_GET['sorgu']);
+				$sorgu = $db->get_results('SELECT * FROM  icerik WHERE durum=1 AND (baslik LIKE "%'.$arama.'%" OR metin LIKE "%'.$arama.'%")  ORDER BY id DESC LIMIT '.$limit.', '.$this->getIcerikSayisi());
+				$say = $db->get_var('SELECT COUNT(id) FROM  icerik WHERE durum=1 AND (baslik LIKE "%'.$arama.'%" OR metin LIKE "%'.$arama.'%")');
 				$this->setToplamIcerik($say);
 			break;
 			default:

@@ -21,8 +21,22 @@
 
                        </ul>
                     </li>
+                    <li>
+                        <a href="index.php?y=uye" class=" hvr-bounce-to-right"><i class="fa fa-user nav_icon "></i><span class="nav-label">Üyeler</span> </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.php?y=uye" class=" hvr-bounce-to-right"> <i class="fa fa-eye nav_icon"></i>Üyeleri Gör</a></li>
+                            <li><a href="index.php?y=uye&s=ekle" class=" hvr-bounce-to-right"> <i class="fa fa-plus nav_icon"></i>Ekle</a></li>
+
+                       </ul>
+                    </li>
+                     <li>
+                        <a href="index.php?y=yorum" class=" hvr-bounce-to-right"><i class="fa fa-comment nav_icon "></i><span class="nav-label">Yorumlar</span> </a>
+                    </li>
                      <li>
                         <a href="index.php?y=ayar" class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon "></i><span class="nav-label">Ayarlar</span> </a>
+                    </li>
+                    <li>
+                        <a href="cikis.php" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon "></i><span class="nav-label">Çıkış</span> </a>
                     </li>
                    <?php /*
                     <li>
