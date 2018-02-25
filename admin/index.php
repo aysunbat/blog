@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 require_once('../baglan.php');
 require_once('fonksiyon.php');
@@ -159,6 +158,4 @@ switch ($y) {
 		$yer = 'index';
 	break;
 }
-
->>>>>>> bf68755a16519346ce21c195c3bac7a983fdfa16
 include('tasarim/'.$yer.'.php');
