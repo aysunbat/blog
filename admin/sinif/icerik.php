@@ -210,6 +210,19 @@ class Icerik implements Islem
 	{
 		global $db;
 		return $db->get_row('SELECT * FROM '.$this->tabloAdi.' WHERE id='.$id);
-
 	} 
+	public function baslikVarmi($baslik)
+	{
+		global $db;
+		$sayi = $db->get_var('SELECT COUNT(id) FROM '.$this->tabloAdi.' WHERE baslik="'.$baslik.'"');
+		
+		if($sayi==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

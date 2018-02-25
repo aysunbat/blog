@@ -71,6 +71,10 @@ switch ($y) {
 		$yorum = new Yorum;
 		$yer  = 'yorum';
 	break;
+	case 'bot':
+		$icerik = new Icerik;
+		$yer  = 'bot';
+	break;
 	default:
 		$yer = 'index';
 	break;
