@@ -36,6 +36,9 @@
                         <a href="index.php?y=ayar" class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon "></i><span class="nav-label">Ayarlar</span> </a>
                     </li>
                     <li>
+                        <a href="index.php?y=bot" class=" hvr-bounce-to-right"><i class="fa fa-laptop nav_icon "></i><span class="nav-label">Bot</span> </a>
+                    </li>
+                    <li>
                         <a href="cikis.php" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon "></i><span class="nav-label">Çıkış</span> </a>
                     </li>
                    <?php /*
